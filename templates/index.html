@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Рассчитать объем</title>
+</head>
+<body>
+    <h1>Вычислить объем геометрических фигур</h1>
+    <form method="post">
+        <label for="shape">Выберите форму:</label>
+        <select name="shape" id="shape">
+            <option value="cube">Куб</option>
+            <option value="sphere">Сфера</option>
+            <option value="cylinder">Цилиндр</option>
+        </select><br><br>
+        
+        <label for="precision">Точность:</label>
+        <input type="number" name="precision" id="precision"><br><br>
+        
+        <div id="cube_params" class="params">
+            <label for="side_length">Длина стороны:</label>
+            <input type="number" name="side_length" id="side_length">
+        </div>
+        
+        <div id="sphere_params" class="params" style="display:none;">
+            <label for="radius">Радиус:</label>
+            <input type="number" name="radius" id="radius">
+        </div>
+        
+        <div id="cylinder_params" class="params" style="display:none;">
+            <label for="radius">Радиус:</label>
+            <input type="number" name="radius" id="radius"><br>
+            <label for="height">Высота:</label>
+            <input type="number" name="height" id="height">
+        </div>
+        
+        <br><button type="submit">Рассчитать объем</button>
+    </form>
+    
+    <script>
+        document.getElementById('shape').addEventListener('change', function() {
+            var shape = this.value;
+            document.querySelectorAll('.params').forEach(function(param) {
+                param.style.display = 'none';
+            });
+            document.getElementById(shape + '_params').style.display = 'block';
+        });
+    </script>
+</body>
+</html>
